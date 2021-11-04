@@ -26,7 +26,8 @@ Output has also been written to DSpace log.
 
 Contact the DataSpace team at ${DATASPACE_SUPPORT_EMAIL} for support.";
 
-echo "${email_subject}"
-echo "${email_body}"
+echo -e "Embargo output: \n${embargo_message}"
 
 mail -aFrom:noreply-dataspace@princeton.edu -s "${email_subject}" "${email_addresses}" <<< "${email_body}"
+
+echo "Embargo report sent"                                                                                              
