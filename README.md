@@ -9,9 +9,9 @@ This command-line script runs the [DSpace embargo lifter](https://wiki.lyrasis.o
     * The email address(es) to which embargo reports should go whenever this script is run.  
     * NOTE: To add multiple email addresses, separater them by a comma with no whitespace.  
       Example: `person_a@address.com,person_b@address.com`
-  * DATASPACE_SUPPORT_EMAIL
+  * `DATASPACE_SUPPORT_EMAIL`
     * The email address users contact for DataSpace support
-  * DSPACE_PATH
+  * `DSPACE_PATH`
     * The full path to the DSpace utilities executable directory on the server
 
   **All values are stored in LastPass.**
