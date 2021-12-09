@@ -4,7 +4,7 @@ This command-line script runs the [DSpace embargo lifter](https://wiki.lyrasis.o
 
 ## Instructions
 
-1. To run, create a file called `.embargo_env` modeled after `.embargo_env.example`, populated with values for the following variables:
+1. To run, uncomment and edit the environment variables at the top of the `embargo_lifter.sh` file and populate with the following variables:
   * `EMBARGO_EMAILS`
     * The email address(es) to which embargo reports should go whenever this script is run.  
     * NOTE: To add multiple email addresses, separater them by a comma with no whitespace.  
@@ -43,7 +43,15 @@ Embargo report sent
   Embargo report sent
   ```
 
-3.  An email report will be sent to the address(es) specified in the .embargo_env file's `EMBARGO_EMAILS` variable containing the embargo output displayed at the command line.
+1.  An email report will be sent to the address(es) specified in the `EMBARGO_EMAILS` variable containing the embargo output displayed at the command line.
+
+## Recommendations for installing and managing with cron
+
+When scheduling with cron, pipe the stdout output to a log file, for example:
+
+```cron
+$HOME/dataspace_embargo_lifter/embargo_lifter.sh >> $HOME/embargo_lift.log
+```
 
 ## Contributing
 
