@@ -1,13 +1,10 @@
-if [[  ! -f .embargo_env ]]; then
-  echo "Embargo ENV file does not exist"
-  exit 1
-fi
-
-export $(egrep -v '^#' .embargo_env | xargs)
+# export EMBARGO_EMAILS="x";
+# export DATASPACE_SUPPORT_EMAIL="x";
+# export DSPACE_PATH="x";
 
 email_addresses=$EMBARGO_EMAILS
-email_subject="DataSpace Embargo Lifter Report for $(date '+%Y-%m-%d')"
-
+email_subject="DataSpace Embargo Lifter Report for $(date '+%Y-%m-%d %T')"
+echo "${email_subject}"
 echo "Running embargo lifter...";
 
 EMBARGO_LIFT=`${DSPACE_PATH}/bin/dspace embargo-lifter -l --verbose 2>&1`
@@ -25,9 +22,8 @@ ${embargo_message}
 Output has also been written to DSpace log.
 
 Contact the DataSpace team at ${DATASPACE_SUPPORT_EMAIL} for support.";
-
 echo -e "Embargo output: \n${embargo_message}"
 
-mail -aFrom:noreply-dataspace@princeton.edu -s "${email_subject}" "${email_addresses}" <<< "${email_body}"
+/usr/bin/mail -aFrom:noreply-dataspace@princeton.edu -s "${email_subject}" "${email_addresses}" <<< "${email_body}"
 
-echo "Embargo report sent"                                                                                              
+echo "Embargo report sent"
